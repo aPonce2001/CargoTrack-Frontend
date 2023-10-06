@@ -1,0 +1,209 @@
+<form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="description"
+      >Descripción<span class="text-danger">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      placeholder="Descripción"
+      aria-required="true"
+      formControlName="description"
+      [class.is-invalid]="description.touched && description.invalid"
+      [(ngModel)]="newShipping.description"
+    />
+    <div
+      *ngIf="description.touched && description.invalid"
+      class="invalid-feedback"
+    >
+      <div *ngIf="description.errors?.['required']">
+        Por favor, ingresa la descripción.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="weight">Peso (kg)<span class="text-danger">*</span></label>
+    <input
+      type="number"
+      class="form-control"
+      id="weight"
+      placeholder="Peso (kg)"
+      aria-required="true"
+      formControlName="weight"
+      [class.is-invalid]="weight.touched && weight.invalid"
+      [(ngModel)]="newShipping.weight"
+    />
+    <div *ngIf="weight.touched && weight.invalid" class="invalid-feedback">
+      <div *ngIf="weight.errors?.['required']">Por favor, ingresa el peso.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="length">Largo (cm)<span class="text-danger">*</span></label>
+    <input
+      type="number"
+      class="form-control"
+      id="length"
+      placeholder="Largo (cm)"
+      aria-required="true"
+      formControlName="length"
+      [class.is-invalid]="length.touched && length.invalid"
+      [(ngModel)]="newShipping.length"
+    />
+    <div *ngIf="length.touched && length.invalid" class="invalid-feedback">
+      <div *ngIf="length.errors?.['required']">Por favor, ingresa el largo.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="width">Ancho (cm)<span class="text-danger">*</span></label>
+    <input
+      type="number"
+      class="form-control"
+      id="width"
+      placeholder="Ancho (cm)"
+      aria-required="true"
+      formControlName="width"
+      [class.is-invalid]="width.touched && width.invalid"
+      [(ngModel)]="newShipping.width"
+    />
+    <div *ngIf="width.touched && width.invalid" class="invalid-feedback">
+      <div *ngIf="width.errors?.['required']">Por favor, ingresa el ancho.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="height">Alto (cm)<span class="text-danger">*</span></label>
+    <input
+      type="number"
+      class="form-control"
+      id="height"
+      placeholder="Alto (cm)"
+      aria-required="true"
+      formControlName="height"
+      [class.is-invalid]="height.touched && height.invalid"
+      [(ngModel)]="newShipping.height"
+    />
+    <div *ngIf="height.touched && height.invalid" class="invalid-feedback">
+      <div *ngIf="height.errors?.['required']">Por favor, ingresa el alto.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="sourceAddress"
+      >Dirección de origen<span class="text-danger">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="sourceAddress"
+      placeholder="Dirección Origen"
+      aria-required="true"
+      formControlName="sourceAddress"
+      [class.is-invalid]="sourceAddress.touched && sourceAddress.invalid"
+      [(ngModel)]="newShipping.sourceAddress"
+    />
+    <div
+      *ngIf="sourceAddress.touched && sourceAddress.invalid"
+      class="invalid-feedback"
+    >
+      <div *ngIf="sourceAddress.errors?.['required']">
+        Por favor, ingresa la dirección de origen.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="sourceCity">Ciudad de origen<span class="text-danger">*</span></label>
+    <input
+      type="text"
+      class="form-control"
+      id="sourceCity"
+      placeholder="Ciudad"
+      aria-required="true"
+      formControlName="sourceCity"
+      [class.is-invalid]="sourceCity.touched && sourceCity.invalid"
+      [(ngModel)]="newShipping.sourceCity"
+    />
+    <div *ngIf="sourceCity.touched && sourceCity.invalid" class="invalid-feedback">
+      <div *ngIf="sourceCity.errors?.['required']">
+        Por favor, ingresa la ciudad de origen.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="destinationAddress"
+      >Dirección de destino<span class="text-danger">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="destinationAddress"
+      placeholder="Dirección Destino"
+      aria-required="true"
+      formControlName="destinationAddress"
+      [class.is-invalid]="destinationAddress.touched && destinationAddress.invalid"
+      [(ngModel)]="newShipping.destinationAddress"
+    />
+    <div
+      *ngIf="destinationAddress.touched && destinationAddress.invalid"
+      class="invalid-feedback"
+    >
+      <div *ngIf="destinationAddress.errors?.['required']">
+        Por favor, ingresa la dirección de destino.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="destinationCity">Ciudad de destino<span class="text-danger">*</span></label>
+    <input
+      type="text"
+      class="form-control"
+      id="destinationCity"
+      placeholder="Ciudad"
+      aria-required="true"
+      formControlName="destinationCity"
+      [class.is-invalid]="destinationCity.touched && destinationCity.invalid"
+      [(ngModel)]="newShipping.destinationCity"
+    />
+    <div *ngIf="destinationCity.touched && destinationCity.invalid" class="invalid-feedback">
+      <div *ngIf="destinationCity.errors?.['required']">
+        Por favor, ingresa la ciudad de destino.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cargoType"
+      >Tipo de Carga<span class="text-danger">*</span></label
+    >
+    <select
+      class="form-control"
+      id="cargoType"
+      formControlName="cargoType"
+      aria-required="true"
+      [(ngModel)]="newShipping.cargoType"
+    >
+      <option *ngFor="let _ of [].constructor(cargoTypeEnumLength); let index = index" [value]="index">
+        {{ keyAsCargoType(index)!! | cargoType }}
+      </option>
+    </select>
+  </div>
+
+  <div class="button-group">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="shippingForm.invalid"
+    >
+      Registrar Envío
+    </button>
+    <button type="button" class="btn btn-secondary" routerLink="../">
+      Cancelar
+    </button>
+  </div>
+</form>

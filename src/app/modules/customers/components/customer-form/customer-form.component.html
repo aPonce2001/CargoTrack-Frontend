@@ -1,0 +1,92 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="firstName">Nombre<span class="text-danger">*</span></label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstName"
+      placeholder="Nombre"
+      aria-required="true"
+      [(ngModel)]="customer.firstName"
+      [class.is-invalid]="firstName.touched && firstName.invalid"
+      formControlName="firstName"
+    />
+    <div *ngIf="firstName.touched && firstName.invalid" class="invalid-feedback">
+      <div *ngIf="firstName.errors?.['required']">Por favor, ingresa tu nombre.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Apellido<span class="text-danger">*</span></label>
+    <input
+      type="text"
+      class="form-control"
+      id="lastName"
+      placeholder="Apellido"
+      aria-required="true"
+      [(ngModel)]="customer.lastName"
+      formControlName="lastName"
+      [class.is-invalid]="lastName.touched && lastName.invalid"
+    />
+    <div *ngIf="lastName.touched && lastName.invalid" class="invalid-feedback">
+      <div *ngIf="lastName.errors?.['required']">Por favor, ingresa tu apellido.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Teléfono<span class="text-danger">*</span></label>
+    <input
+      type="text"
+      class="form-control"
+      id="phone"
+      placeholder="Teléfono"
+      aria-required="true"
+      [(ngModel)]="customer.phone"
+      formControlName="phone"
+      [class.is-invalid]="phone.touched && phone.invalid"
+    />
+    <div *ngIf="phone.touched && phone.invalid" class="invalid-feedback">
+      <div *ngIf="phone.errors?.['required']">Por favor, ingresa tu número de teléfono.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email<span class="text-danger">*</span></label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="Email"
+      aria-required="true"
+      [(ngModel)]="customer.email"
+      formControlName="email"
+      [class.is-invalid]="email.touched && email.invalid"
+    />
+    <div *ngIf="email.touched && email.invalid" class="invalid-feedback">
+      <div *ngIf="email.errors?.['required']">Por favor, ingresa tu dirección de correo electrónico.</div>
+      <div *ngIf="email.errors?.['email']">El formato del correo electrónico es inválido. Por favor, asegúrate de que sea una dirección de correo válida, como ejemplo@dominio.com.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Dirección<span class="text-danger">*</span></label>
+    <input
+      type="text"
+      class="form-control"
+      id="address"
+      placeholder="Dirección"
+      aria-required="true"
+      [(ngModel)]="customer.address"
+      formControlName="address"
+      [class.is-invalid]="address.touched && address.invalid"
+    />
+    <div *ngIf="address.touched && address.invalid" class="invalid-feedback">
+      <div *ngIf="address.errors?.['required']">Por favor, ingresa tu dirección.</div>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">Registrar</button>
+    <button type="button" class="btn btn-secondary" routerLink="../">Cancelar</button>
+  </div>
+</form>

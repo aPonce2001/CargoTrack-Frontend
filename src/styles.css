@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+.bg-primary {
+    background-color: #002955 !important;
+}
+
+.border-primary {
+    border-color: #002955 !important;
+}
+
+.text-primary {
+    color: #002955 !important;
+}
+
+.table-primary {
+    background-color: #002955 !important;
+}
+
+app-header-footer-template {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+}
