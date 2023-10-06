@@ -1,0 +1,15 @@
+<a
+  class="btn btn-secondary my-2 me-2"
+  routerLink="../"
+  >Regresar</a
+>
+<a
+  class="btn btn-primary my-2"
+  routerLink="/envios/nuevo"
+  [queryParams]="{ customerId: customerId }"
+  >Nuevo envío</a
+>
+<div class="row">
+  <app-customer-profile [customer]="customer" class="col-sm-12 col-md-6"></app-customer-profile>
+  <app-customer-info [customer]="customer" class="col-sm-12 col-md-6"></app-customer-info>
+</div>
