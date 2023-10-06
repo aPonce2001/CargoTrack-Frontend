@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Customer, CustomersService } from 'src/app/core/core.module';
 
 @Component({
-  selector: 'app-customer-page',
   templateUrl: './customer-page.component.html',
   styleUrls: ['./customer-page.component.css']
 })
