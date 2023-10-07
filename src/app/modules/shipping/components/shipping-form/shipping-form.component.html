@@ -53,7 +53,9 @@
       [(ngModel)]="newShipping.length"
     />
     <div *ngIf="length.touched && length.invalid" class="invalid-feedback">
-      <div *ngIf="length.errors?.['required']">Por favor, ingresa el largo.</div>
+      <div *ngIf="length.errors?.['required']">
+        Por favor, ingresa el largo.
+      </div>
     </div>
   </div>
 
@@ -116,7 +118,9 @@
   </div>
 
   <div class="form-group">
-    <label for="sourceCity">Ciudad de origen<span class="text-danger">*</span></label>
+    <label for="sourceCity"
+      >Ciudad de origen<span class="text-danger">*</span></label
+    >
     <input
       type="text"
       class="form-control"
@@ -127,7 +131,10 @@
       [class.is-invalid]="sourceCity.touched && sourceCity.invalid"
       [(ngModel)]="newShipping.sourceCity"
     />
-    <div *ngIf="sourceCity.touched && sourceCity.invalid" class="invalid-feedback">
+    <div
+      *ngIf="sourceCity.touched && sourceCity.invalid"
+      class="invalid-feedback"
+    >
       <div *ngIf="sourceCity.errors?.['required']">
         Por favor, ingresa la ciudad de origen.
       </div>
@@ -145,7 +152,9 @@
       placeholder="Dirección Destino"
       aria-required="true"
       formControlName="destinationAddress"
-      [class.is-invalid]="destinationAddress.touched && destinationAddress.invalid"
+      [class.is-invalid]="
+        destinationAddress.touched && destinationAddress.invalid
+      "
       [(ngModel)]="newShipping.destinationAddress"
     />
     <div
@@ -159,7 +168,9 @@
   </div>
 
   <div class="form-group">
-    <label for="destinationCity">Ciudad de destino<span class="text-danger">*</span></label>
+    <label for="destinationCity"
+      >Ciudad de destino<span class="text-danger">*</span></label
+    >
     <input
       type="text"
       class="form-control"
@@ -170,7 +181,10 @@
       [class.is-invalid]="destinationCity.touched && destinationCity.invalid"
       [(ngModel)]="newShipping.destinationCity"
     />
-    <div *ngIf="destinationCity.touched && destinationCity.invalid" class="invalid-feedback">
+    <div
+      *ngIf="destinationCity.touched && destinationCity.invalid"
+      class="invalid-feedback"
+    >
       <div *ngIf="destinationCity.errors?.['required']">
         Por favor, ingresa la ciudad de destino.
       </div>
@@ -187,9 +201,10 @@
       formControlName="cargoType"
       aria-required="true"
       [(ngModel)]="newShipping.cargoType"
+      (ngModelChange)="convertToNumber($event)"
     >
-      <option *ngFor="let _ of [].constructor(cargoTypeEnumLength); let index = index" [value]="index">
-        {{ keyAsCargoType(index)!! | cargoType }}
+      <option *ngFor="let type of cargoTypes" [value]="type">
+        {{ type | cargoType }}
       </option>
     </select>
   </div>
@@ -202,7 +217,7 @@
     >
       Registrar Envío
     </button>
-    <button type="button" class="btn btn-secondary" routerLink="../">
+    <button type="button" class="btn btn-secondary" routerLink="/envios">
       Cancelar
     </button>
   </div>
