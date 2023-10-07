@@ -1,4 +1,4 @@
-import { CargoType, keyAsCargoType } from './models/api/cargo-type.model';
+import { CargoType } from './models/api/cargo-type.model';
 import { Shipping } from './models/api/shipping.model';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,4 +20,4 @@ import { CargoTypePipe } from './pipes/cargo-type.pipe';
 })
 export class CoreModule {}
 
-export { Customer, CustomersService, Shipping, ShippingsService, CargoType, keyAsCargoType };
+export { Customer, CustomersService, Shipping, ShippingsService, CargoType };

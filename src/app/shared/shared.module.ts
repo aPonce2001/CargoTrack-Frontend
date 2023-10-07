@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HeaderFooterTemplate } from './templates/header-footer-template/header-footer-template.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ButtonAnchorComponent } from './components/button-anchor/button-anchor.component';
+import { enumToList } from './utils/enum.utils';
 
 @NgModule({
   declarations: [
@@ -27,4 +28,4 @@ import { ButtonAnchorComponent } from './components/button-anchor/button-anchor.
 })
 export class SharedModule { }
 
-export { HeaderFooterTemplate, ButtonComponent, ButtonAnchorComponent };
+export { HeaderFooterTemplate, ButtonComponent, ButtonAnchorComponent, enumToList };

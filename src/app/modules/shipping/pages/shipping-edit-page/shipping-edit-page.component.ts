@@ -13,7 +13,7 @@ export class ShippingEditPage implements OnInit {
 
   ngOnInit(): void {
     this.shippingsService
-      .getShippingById(this.route.snapshot.params['shippingId'])
+      .getShippingById(this.route.snapshot.params['shippingId'] as number)
       .subscribe((shipping: Shipping) => {
         this.newShipping = shipping;
       });

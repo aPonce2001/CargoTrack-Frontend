@@ -1,22 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
   CargoType,
   Shipping,
-  ShippingsService,
-  keyAsCargoType,
+  ShippingsService
 } from 'src/app/core/core.module';
+import { enumToList } from 'src/app/shared/shared.module';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShippingFormComponent implements OnInit {
+export class ShippingFormComponent implements OnInit, AfterViewInit  {
   cargoTypeEnum = CargoType;
-  cargoTypeEnumLength: number = Object.keys(CargoType).length / 2;
+  cargoTypes = enumToList(CargoType);
   @Input() newShipping: Shipping = {
     shippingId: 0,
     description: '',
@@ -39,8 +40,10 @@ export class ShippingFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    this.convertToNumber(this.newShipping.cargoType);
   }
 
   shippingForm = new FormGroup({
@@ -57,18 +60,20 @@ export class ShippingFormComponent implements OnInit {
   });
 
   onSubmit(): void {
-    if(this.newShipping.shippingId === 0) {
+    if (this.newShipping.shippingId == 0) {
       const customerId = this.route.snapshot.queryParams['customerId'];
       this.newShipping.customerId = customerId as number;
       this.shippingsService.createShipping(this.newShipping).subscribe(() => {
         this.shippingForm.reset();
         this.router.navigate(['/envios']);
       });
-    }else {
-      this.shippingsService.updateShipping(this.newShipping.shippingId, this.newShipping).subscribe(() => {
-        this.shippingForm.reset();
-        this.router.navigate(['/envios']);
-      })
+    } else {
+      this.shippingsService
+        .updateShipping(this.newShipping.shippingId, this.newShipping)
+        .subscribe(() => {
+          this.shippingForm.reset();
+          this.router.navigate(['/envios']);
+        });
     }
   }
 
@@ -112,8 +117,7 @@ export class ShippingFormComponent implements OnInit {
     return this.shippingForm.controls['cargoType'];
   }
 
-  keyAsCargoType(key: number): CargoType | undefined {
-    return keyAsCargoType(key);
-  } 
-  
+  convertToNumber(value: any): void {
+    this.newShipping.cargoType = +value;
+  }
 }
